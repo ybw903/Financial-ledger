@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "incremental": true,  /* 증분 컴파일 설정 여부 */
+        "target": "ES6", /* 사용할 특정 ECMAScript 버전 설정: 'ES3' (기본), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 혹은 'ESNEXT'. */
+        "module": "commonjs", 
+        "outDir": "./dist",
+        "strict": false,
+        "baseUrl": "./",
+        "paths": {
+            "src/*": ["./src/*"]
+        },
+        "esModuleInterop": true /* 모든 imports에 대한 namespace 생성을 통해 CommonJS와 ES Modules 간의 상호 운용성이 생기게할 지 여부, 'allowSyntheticDefaultImports'를 암시적으로 승인합니다. */
+    }
+}
