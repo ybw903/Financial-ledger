@@ -1,0 +1,42 @@
+nav {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-around;
+
+    height: 47px;
+    width: calc(100% - 30px);
+    max-width: 588px;
+
+    .separator {
+        flex: 0.5;
+        display: grid;
+        place-items: center;
+
+        .line {
+            display: inline-block;
+            left: 50%;
+            height: 70%;
+            width: 1px;
+            background-color: #333333;
+        }
+    }
+
+    .icon-wrap {
+        flex: 1;
+        text-align: center;
+        height: 100%;
+
+        .icon {
+            width: 47px;
+            height: 47px;
+            border-radius: 10px;
+            line-height: 47px;
+            font-size: 32px;
+            color: #333333;
+        }
+
+        .selected {
+            background-color: #333333;
+        }
+    }
+}
