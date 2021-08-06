@@ -1,4 +1,6 @@
-@use 'src/styles/variables' as *;
+@use '../../../styles/variables' as *;
+
+$blue: #166ff3;
 .sum-indicator-wrap {
     margin-top: 54px;
     width: calc(100% - #{$content-padding * 2});

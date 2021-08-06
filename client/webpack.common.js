@@ -10,7 +10,7 @@ module.exports = {
         filename: 'js/bundle.js'
     },
     resolve: {
-        extensions: ['.ts','.js']
+        extensions: ['.ts','.js','scss']
     },
     plugins: [
         new HtmlWebpackPlugin({

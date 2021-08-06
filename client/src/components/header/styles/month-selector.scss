@@ -24,10 +24,22 @@
 
         &.left {
             left: 0;
-        }
-
+            background-image: linear-gradient(
+              to right,
+              var(--white),
+              var(--white) 40%,
+              rgba(var(--white-rgb), 0)
+            );
+          }
+      
         &.right {
             right: 0;
+            background-image: linear-gradient(
+                to left,
+                var(--white),
+                var(--white) 40%,
+                rgba(var(--white-rgb), 0)
+            );
         }
 
         &.forcedly-shaded {
