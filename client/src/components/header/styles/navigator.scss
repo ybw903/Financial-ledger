@@ -1,11 +1,13 @@
+@use 'src/styles/variables' as *;
+
 nav {
     margin-top: 55px;
     display: flex;
     justify-content: space-around;
 
     height: 47px;
-    width: calc(100% - 30px);
-    max-width: 588px;
+    width: calc(100% - #{$content-padding * 2});
+    max-width: $content-width;
 
     .separator {
         flex: 0.5;
@@ -17,7 +19,7 @@ nav {
             left: 50%;
             height: 70%;
             width: 1px;
-            background-color: #333333;
+            background-color: var(--black);
         }
     }
 
@@ -32,11 +34,11 @@ nav {
             border-radius: 10px;
             line-height: 47px;
             font-size: 32px;
-            color: #333333;
+            color: var(--black);
         }
 
         .selected {
-            background-color: #333333;
+            background-color: var(--light-blue);
         }
     }
 }
