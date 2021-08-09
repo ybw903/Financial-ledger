@@ -1,7 +1,32 @@
+export interface Category {
+    id: number
+    name: string
+    type: string
+}
+
+
 export interface CalanderDayDate {
     date: number
     isInThisMonth: boolean
     isHoliday: boolean
     incomeSum: number
     expenditureSum: number
+}
+
+export interface History {
+    id?: number
+    type: string
+    date: string
+    content: string
+    amout: number
+    paymentId?: number
+    categoryId?: number
+    isThisMonth?: boolean
+}
+
+export type WindowHistoryState = {
+    path?: string
+    year?: number
+    month?: number
+    type?: string
 }
