@@ -1,3 +1,4 @@
+import { dateWithDay, groupBy } from '../../utils/helper';
 import CreateHistory from '../create-history';
 import './styles/index.scss';
 
@@ -22,13 +23,13 @@ export default class History {
             return;
         if(!target.closest('.float')) 
             return;
-
+        
         e.stopImmediatePropagation();
         new CreateHistory();
     }
 
     render():void {
-        const histoiesByDate = this.groupBy([{'date':3},{'date':4}], 'date')
+        const histoiesByDate = groupBy([{'date':3},{'date':4}], 'date')
         const contentWrap = document.querySelector('.content-wrap');
         contentWrap.innerHTML = `
             <div class='history-view'>
@@ -58,7 +59,7 @@ export default class History {
     }
 
     createDateIndicator(date: string): string {
-        return `<div>${this.dateWithDay(date)}</div>`
+        return `<div>${dateWithDay(date)}</div>`
     }
 
     createHistoryCard(history: History): string {
@@ -86,30 +87,4 @@ export default class History {
         `
     }
 
-    dayStr = ['SUN','MON','TUE','WED','THU','FRI','SAT']
-
-    dateWithDay(dateStr: string): string {
-        const dateObj = new Date(dateStr);
-        const day = dateObj.getDay();
-        const date = dateObj.getDate();
-        let dateExtension = 'th';
-        if(date == 1) {
-            dateExtension = 'st';
-        }
-        else if(date == 2) {
-            dateExtension = 'nd';
-        }
-        else if(date == 3) {
-            dateExtension = 'rd';
-        }
-        return `${this.dayStr[day]}, ${date}${dateExtension}`
-    }
-
-    groupBy(objArr: {}[], key: string):object {
-        return objArr.reduce((a,b) => {
-            a[b[key]] = a[b[key]]??[];
-            a[b[key]].push(b);
-            return a;
-        },{});
-    }
 }
