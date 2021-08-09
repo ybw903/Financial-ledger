@@ -24,6 +24,13 @@ export interface History {
     isThisMonth?: boolean
 }
 
+export interface Store {
+    categories?: Category[]
+    histories?: History[]
+    expenditureSum?: number
+    incomeSum?: number
+}
+
 export type WindowHistoryState = {
     path?: string
     year?: number
