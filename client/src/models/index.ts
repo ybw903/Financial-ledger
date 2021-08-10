@@ -3,7 +3,7 @@ import cem from '../utils/custom-event';
 
 class Model {
     store: Store = {};
-
+    historyId:number = 1;
     constructor() {
         cem.subscribe('statepop', this.getData.bind(this));
         cem.subscribe('statechange', this.getData.bind(this));
@@ -53,8 +53,8 @@ class Model {
 
     createHistory(e: CustomEvent) {
         const {historyData, state} = e.detail;
-        
         if(historyData.isThisMonth) {
+            historyData.id = this.historyId++;
             this.store.histories.push(historyData);
             this.initializeHistories();
             cem.fire('storeupdated',{state,store: this.store});
