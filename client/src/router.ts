@@ -1,6 +1,6 @@
-import CreateHistory from "./components/create-history";
-import Header from "./components/header";
-import History from "./components/history";
+import CreateHistory from "./views/create-history-view";
+import Header from "./views/header-view";
+import History from "./views/history-view";
 import cem from './utils/custom-event';
 
 export default class Router {
