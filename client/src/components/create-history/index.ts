@@ -138,10 +138,11 @@ export default class CreateHistory {
 
 
     createTypePicker(selectedType = 'expenditure'): string {
+        
         return `
             <div class='type-picker'>
                 <div class='type-indicator income ${selectedType === 'income'? 'selected':''}'>Income</div>
-                <div class='type-indicator expenditure' ${selectedType === 'expenditure'? 'selected':''}>Expenditure</div>
+                <div class='type-indicator expenditure ${selectedType === 'expenditure'? 'selected':''}'>Expenditure</div>
             </div>
         `
     }
