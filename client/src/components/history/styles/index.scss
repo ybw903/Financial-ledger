@@ -10,5 +10,10 @@
     flex-direction: column;
     align-items: center;
 
+    .date-history-column {
+        width: 100%;
+        @include meta.load-css('./date-indicator');
+        @include meta.load-css('./history-card');
+    }
     @include meta.load-css('./floating-button');
 }

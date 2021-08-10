@@ -1,0 +1,49 @@
+.history-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 23px 31px;
+    height: 87px;
+    width: 100%;
+    background: var(--light-blue);
+    border-radius: 20px;
+    margin-bottom: 17px;
+    cursor: pointer;
+
+    .front {
+        display: flex;
+        flex-direction: column;
+
+        .payment {
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 16px;
+            color: var(--gray);
+        }
+
+        .content {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 24px;
+            margin-top: 3px;
+            color: var(--black);
+        }
+    }
+
+    .back {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .amount {
+            font-weight: bold;
+            font-size:20px;
+            font-feature-settings: 'tnum' on, 'lnum' on;
+            line-height: 24px;
+            color: var(--red);
+        }
+
+        .income {
+            color: var(--blue);
+        }
+    }
+}
