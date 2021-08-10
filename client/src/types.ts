@@ -18,8 +18,8 @@ export interface History {
     type: string
     date: string
     content: string
-    amout: number
-    paymentId?: number
+    amount: number
+    payment: string
     categoryId?: number
     isThisMonth?: boolean
 }
