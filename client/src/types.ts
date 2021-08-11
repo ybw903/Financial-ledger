@@ -5,7 +5,7 @@ export interface Category {
 }
 
 
-export interface CalanderDayDate {
+export interface CalendarDayDate {
     date: number
     isInThisMonth: boolean
     isHoliday: boolean
@@ -30,7 +30,6 @@ export interface Store {
     expenditureSum?: number
     incomeSum?: number
 }
-
 
 
 export type WindowHistoryState = {
