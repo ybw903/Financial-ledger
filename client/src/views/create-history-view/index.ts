@@ -1,6 +1,6 @@
 import { Category, History } from '@/types';
 import cem from '../../utils/custom-event';
-import './styles/index.scss'
+import './styles/index.scss';
 
 export default class CreateHistory {
 
