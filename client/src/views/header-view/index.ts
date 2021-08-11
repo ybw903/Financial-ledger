@@ -39,6 +39,34 @@ export default class Header {
         const {target} = e;
         if(!(target instanceof HTMLElement)) return;
         this.shaderClickHandler(target);
+        this.typeButtonClickHandler(target);
+    }
+
+
+    typeButtonClickHandler(target: HTMLElement): void {
+        const button = target.closest<HTMLElement>('.money-button');
+        if(!button) return;
+
+        const state = {...history.state};
+        const sumIndicator = button.closest('.sum-indicator');
+        const selectedButton = sumIndicator.querySelector('.selected');
+        const type = button.classList.contains('income') ? 'income' : 'expenditure';
+
+        if(!selectedButton) {
+            state.type = type;
+            button.classList.toggle('selected');
+        } else if(selectedButton === button) {
+            delete state.type;
+            selectedButton.classList.toggle('selected');
+        } else {
+            state.type = type;
+            selectedButton.classList.toggle('selected');
+            button.classList.toggle('selected');
+        }
+
+        button.addEventListener('transitionend', () => {
+            cem.fire('statechange',state);
+        })
     }
 
     shaderClickHandler(target: HTMLElement):void {

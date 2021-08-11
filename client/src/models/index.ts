@@ -26,10 +26,16 @@ class Model {
     }
 
     getData(e: CustomEvent) {
+        const {year, month, type} = e.detail;
         this.getCategories();
         this.getHistories();
         const store = {...this.store};
-        
+
+        if(type) {
+            store.histories = store.histories.filter(
+                (history) => history.type === type
+            )
+        }
         cem.fire('storeupdated', {state: e.detail, store});
     }
 
