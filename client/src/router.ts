@@ -2,13 +2,14 @@ import CreateHistory from "./views/create-history-view";
 import Header from "./views/header-view";
 import History from "./views/history-view";
 import cem from './utils/custom-event';
+import CalendarView from "./views/calendar-view";
 
 export default class Router {
     constructor() {
         new Header();
         new History();
         new CreateHistory();
-
+        new CalendarView();
         window.addEventListener('popstate',(event) => {
             if(event.state === null) return;
             cem.fire('statepop',event.state);

@@ -40,8 +40,21 @@ export default class Header {
         if(!(target instanceof HTMLElement)) return;
         this.shaderClickHandler(target);
         this.typeButtonClickHandler(target);
+        this.navigationClickHandler(target);
     }
 
+    getPathFromLink(aTag: Element): string {
+        const path = aTag.getAttribute('href');
+        return path;
+    }
+
+    navigationClickHandler(target: Element): void {
+        const a = target.closest('a');
+        if(!a) return;
+
+        const path = this.getPathFromLink(a);
+        cem.fire('statechange',Object.assign({},history.state,{path}));        
+    }
 
     typeButtonClickHandler(target: HTMLElement): void {
         const button = target.closest<HTMLElement>('.money-button');
@@ -149,17 +162,14 @@ export default class Header {
         return `
             <nav>
                 <div class='icon-wrap'>
-                    다시 불러오기 버튼
-                </div>
-                <div class='separator'></div>
-                <div class='icon-wrap'>
-                    시계버튼
+                    <a href='/'>
+                        시계버튼
+                    </a>
                 </div>
                 <div class='icon-wrap'>
-                    달력버튼
-                </div>
-                <div class='icon-wrap'>
-                    차트버튼
+                    <a href='/calendar'>
+                        달력버튼
+                    </a>
                 </div>
             </nav>
         `

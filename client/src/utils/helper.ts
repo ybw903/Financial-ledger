@@ -29,7 +29,6 @@ export const dommer = (markup: TemplateStringsArray | string) => {
 
         travelNode = travelNode.nextElementSibling;
     }
-    console.log(frag);
     return frag;
 }
 

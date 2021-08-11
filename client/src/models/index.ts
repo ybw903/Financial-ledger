@@ -75,7 +75,7 @@ class Model {
 
         this.store.histories.forEach((history) =>
             history.type === 'income'
-            ? (incomeSum += history.amount)
+            ? (incomeSum +=  history.amount)
             : (expenditureSum += history.amount)
         )
 
