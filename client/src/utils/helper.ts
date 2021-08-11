@@ -1,4 +1,38 @@
+export const monthStr = [
+    '',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+]
+
 export const dayStr = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+
+export const dommer = (markup: TemplateStringsArray | string) => {
+    const frag = document.createDocumentFragment();
+    const markupStr =
+        typeof markup === 'string' ? markup : Array.isArray(markup) ? markup[0] : '';
+    
+    let travelNode = new DOMParser().parseFromString(markupStr, 'text/html').body
+        .firstElementChild;
+
+    while(travelNode) {
+        frag.appendChild(travelNode);
+
+        travelNode = travelNode.nextElementSibling;
+    }
+    console.log(frag);
+    return frag;
+}
+
 
 export function dateWithDay(dateStr: string): string {
     const dateObj = new Date(dateStr);
