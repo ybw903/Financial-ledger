@@ -31,6 +31,8 @@ export interface Store {
     incomeSum?: number
 }
 
+
+
 export type WindowHistoryState = {
     path?: string
     year?: number
