@@ -1,9 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 
+
+const Main = styled.main`
+  height: 100%;
+  width: 100%;
+`
 
 function App() {
   return (
-    <div>
+    <Main>
       <header>
         <div>
           <div>현재 월 </div>
@@ -43,7 +49,7 @@ function App() {
           </div>
         </div>
       </section>
-    </div>
+    </Main>
   );
 }
 
