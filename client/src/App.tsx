@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Main = styled.main`
   height: 100%;
   width: 100%;
@@ -61,7 +60,7 @@ function App() {
             <div>글자 버튼</div>
           </div>
           <div>
-            달력
+            
           </div>
           <div>
             <ul>
