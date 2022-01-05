@@ -12,7 +12,7 @@ const Calendar:React.FC<ICalendar> = (props) => {
             return (
                 <div>{day}</div>
             )
-        }, '')
+        })
     }
 
     return (
