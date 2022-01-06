@@ -1,10 +1,11 @@
 import * as React from 'react';
 interface ICalendar {
-    month : number
+    date : Date
 }
 
 const Calendar:React.FC<ICalendar> = (props) => {
 
+    const [calendarDate,setCalendarDate] = React.useState<any[]>([]);
     const dayStr = ['일','월','화','수','목','금','토'];
 
     const drawCalendarHeader = () => {
@@ -14,6 +15,32 @@ const Calendar:React.FC<ICalendar> = (props) => {
             )
         })
     }
+
+    React.useEffect(() => {
+        const newCalendarDate: any[] = [];
+        const thisMonthStartDay = props.date.getDay();
+        const thisMonthEndDate = new Date(props.date.getFullYear(), props.date.getMonth() - 1, 1).getDate();
+        const lastMonthEndDate = new Date(props.date.getFullYear(), props.date.getMonth(), 1).getDate();
+        const lastMonthStartDate =  lastMonthEndDate - thisMonthStartDay - 1;
+
+        for (let i = 0; i < thisMonthEndDate; i++) {
+            const date = i + lastMonthEndDate;
+            newCalendarDate.push(date);
+        }
+
+        for (let i = 0; i< thisMonthEndDate; i++) {
+            const date = i + 1;
+            newCalendarDate.push(date);
+        }
+
+        const neededCellCnt = 42 - newCalendarDate.length;
+        for (let i = 0; i < neededCellCnt; i ++) {
+            const date = i + 1;
+            newCalendarDate.push(date);
+        }
+
+        setCalendarDate((prev) => [...(newCalendarDate)]);
+    },[])
 
     return (
         <div>
