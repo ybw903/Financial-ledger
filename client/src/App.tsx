@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Calendar from './components/Calendar';
 
 const Main = styled.main`
   height: 100%;
@@ -60,7 +61,7 @@ function App() {
             <div>글자 버튼</div>
           </div>
           <div>
-            
+            <Calendar date={new Date()}></Calendar>
           </div>
           <div>
             <ul>
