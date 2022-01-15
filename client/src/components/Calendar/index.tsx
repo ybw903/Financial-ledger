@@ -8,18 +8,18 @@ const Calendar: React.FC<ICalendar> = (props) => {
   const dayStr = ['일', '월', '화', '수', '목', '금', '토']
 
   const drawCalendarHeader = () => {
-    return dayStr.map((day) => {
-      return <div>{day}</div>
+    return dayStr.map((day, i) => {
+      return <div key={i}>{day}</div>
     })
   }
 
   const drawCalendarBody = () => {
-    return calendarDate.map((date) => {
-      return <div>{date}</div>
+    return calendarDate.map((date, i) => {
+      return <div key={i}>{date}</div>
     })
   }
 
-  React.useEffect(() => {
+  const getNewCalendarDate = React.useCallback(() => {
     const newCalendarDate: any[] = []
     const thisMonthStartDay = new Date(
       props.date.getFullYear(),
@@ -52,8 +52,12 @@ const Calendar: React.FC<ICalendar> = (props) => {
       const date = i + 1
       newCalendarDate.push(date)
     }
-    setCalendarDate((prev) => [...newCalendarDate])
-  }, [])
+    return newCalendarDate
+  }, [props.date])
+
+  React.useEffect(() => {
+    setCalendarDate((prev) => [...getNewCalendarDate()])
+  }, [props.date])
 
   return (
     <div>

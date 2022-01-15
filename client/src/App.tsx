@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import Calendar from './components/Calendar';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import Calendar from './components/Calendar'
+import HeaderBar from './components/HeaderBar'
 
 const Main = styled.main`
   height: 100%;
@@ -15,10 +16,12 @@ const Header = styled.header`
   flex-direction: row;
   align-items: center;
   padding: 0px 20px;
+  font-weight: 600;
+  font-size: 21px;
 `
 const Section = styled.section`
   width: 100%;
-  display : flex;
+  display: flex;
   align-items: center;
   flex-direction: column;
 `
@@ -30,17 +33,11 @@ const Card = styled.div`
 `
 
 function App() {
+  const [date, setDate] = useState(new Date())
   return (
     <Main>
       <Header>
-        <div>
-          <div>현재 월 </div>
-          <div> 모달 버튼</div>
-        </div>
-        <div>
-          <div>추가 버튼</div>
-          <div>편집 버튼</div>
-        </div>
+        <HeaderBar date={date} />
       </Header>
       <Section>
         <Card>
@@ -61,7 +58,7 @@ function App() {
             <div>글자 버튼</div>
           </div>
           <div>
-            <Calendar date={new Date()}></Calendar>
+            <Calendar date={date}></Calendar>
           </div>
           <div>
             <ul>
@@ -72,7 +69,7 @@ function App() {
         </Card>
       </Section>
     </Main>
-  );
+  )
 }
 
-export default App;
+export default App
