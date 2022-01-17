@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { CalendarHeader, DayIndicator } from './index.style'
 interface ICalendar {
   date: Date
 }
@@ -9,7 +10,11 @@ const Calendar: React.FC<ICalendar> = (props) => {
 
   const drawCalendarHeader = () => {
     return dayStr.map((day, i) => {
-      return <div key={i}>{day}</div>
+      return (
+        <DayIndicator key={i} isHoliday={i == 0}>
+          {day}
+        </DayIndicator>
+      )
     })
   }
 
@@ -61,7 +66,7 @@ const Calendar: React.FC<ICalendar> = (props) => {
 
   return (
     <div>
-      {drawCalendarHeader()}
+      <CalendarHeader>{drawCalendarHeader()}</CalendarHeader>
       {drawCalendarBody()}
     </div>
   )
