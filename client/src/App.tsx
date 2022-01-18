@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Calendar from './components/Calendar'
 import HeaderBar from './components/HeaderBar'
+import data from './data/data.json'
 
 const Main = styled.main`
   height: 100%;
@@ -32,8 +33,34 @@ const Card = styled.div`
   margin: 10px;
 `
 
+const SpendTitle = styled.div`
+  padding: 10px 0px 10px 10px;
+  font-size: 21px;
+  font-weight: 600;
+  color: gray;
+`
+
+const SpendTotal = styled.div`
+  padding: 10px 0px 10px 20px;
+  font-size: 27px;
+  font-weight: 700;
+  color: #000;
+`
+
 function App() {
   const [date, setDate] = useState(new Date())
+  const totTalSpend = useMemo(
+    () =>
+      data.spends
+        .filter(
+          (spend) =>
+            new Date(spend.date).getMonth() === new Date().getMonth() &&
+            spend.type === 'EXPENDITURE'
+        )
+        .reduce((acc, cur, idx) => (acc += cur.money), 0),
+
+    [data]
+  )
   return (
     <Main>
       <Header>
@@ -41,16 +68,8 @@ function App() {
       </Header>
       <Section>
         <Card>
-          <div>
-            <div>이번 달 소비</div>
-          </div>
-          <div>
-            <div>소비 금액</div>
-          </div>
-          <ul>
-            <li>소비내용 1</li>
-            <li>소비내용 2</li>
-          </ul>
+          <SpendTitle>이번 달 소비</SpendTitle>
+          <SpendTotal>{totTalSpend} 원</SpendTotal>
         </Card>
         <Card>
           <div>

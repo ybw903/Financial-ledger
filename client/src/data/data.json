@@ -23,6 +23,12 @@
       "type": "EXPENDITURE",
       "money": 3000,
       "date": "2021-11-03 23:12:18"
+    },
+    {
+      "id": 4,
+      "type": "EXPENDITURE",
+      "money": 3000,
+      "date": "2022-01-18 23:12:18"
     }
   ]
 }
