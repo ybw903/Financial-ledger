@@ -5,13 +5,14 @@ import {
   DateCell,
   DayIndicator,
 } from './index.style'
+import { dayStr } from '../../utils'
+
 interface ICalendar {
   date: Date
 }
 
 const Calendar: React.FC<ICalendar> = (props) => {
   const [calendarDate, setCalendarDate] = React.useState<any[]>([])
-  const dayStr = ['일', '월', '화', '수', '목', '금', '토']
 
   const drawCalendarHeader = () => {
     return dayStr.map((day, i) => {
