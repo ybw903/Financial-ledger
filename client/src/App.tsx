@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import Calendar from './components/Calendar'
 import HeaderBar from './components/HeaderBar'
+import { dayStr } from './utils'
 import data from './data/data.json'
 
 const Main = styled.main`
@@ -46,6 +47,40 @@ const SpendTotal = styled.div`
   font-weight: 700;
   color: #000;
 `
+const DailyExpenseHedaer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+`
+
+const DailyExpenseTitle = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+`
+const DailyExpenseTextButton = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  color: gray;
+`
+
+const DailyExpenseList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+`
+
+const DailyExpenseDay = styled.div`
+  font-size: 18px;
+  font-weight: 18px;
+  color: gray;
+`
+
+const DailyExpenseElement = styled.div`
+  font-size: 21px;
+  font-weight: 700;
+  color: #000;
+`
 
 function App() {
   const [date, setDate] = useState(new Date())
@@ -61,6 +96,19 @@ function App() {
 
     [data]
   )
+  const todayAmounts = useMemo(
+    () =>
+      data.spends.filter((spend) => {
+        const spendDate = new Date(spend.date)
+        const todayDate = new Date()
+        return (
+          spendDate.getFullYear() === todayDate.getFullYear() &&
+          spendDate.getMonth() === todayDate.getMonth() &&
+          spendDate.getDate() === todayDate.getDate()
+        )
+      }),
+    []
+  )
   return (
     <Main>
       <Header>
@@ -72,19 +120,22 @@ function App() {
           <SpendTotal>{totTalSpend} 원</SpendTotal>
         </Card>
         <Card>
-          <div>
-            <div>제목</div>
-            <div>글자 버튼</div>
-          </div>
-          <div>
-            <Calendar date={date}></Calendar>
-          </div>
-          <div>
-            <ul>
-              <li>날짜 소비1</li>
-              <li>날짜 소비2</li>
-            </ul>
-          </div>
+          <DailyExpenseHedaer>
+            <DailyExpenseTitle>전체 내역</DailyExpenseTitle>
+            <DailyExpenseTextButton>달력 접기</DailyExpenseTextButton>
+          </DailyExpenseHedaer>
+          <Calendar date={date}></Calendar>
+          <DailyExpenseList>
+            <DailyExpenseDay>
+              {date.getDate()}일 {dayStr[date.getDay()]}요일
+            </DailyExpenseDay>
+            {todayAmounts.map((todayAmount, i) => (
+              <DailyExpenseElement key={i}>
+                {todayAmount.type === 'EXPENDITURE' ? '-' : '+'}
+                {todayAmount.money} 원
+              </DailyExpenseElement>
+            ))}
+          </DailyExpenseList>
         </Card>
       </Section>
     </Main>
