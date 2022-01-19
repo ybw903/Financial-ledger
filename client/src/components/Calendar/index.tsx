@@ -3,6 +3,7 @@ import {
   CalendarBody,
   CalendarHeader,
   DateCell,
+  DateIndicator,
   DayIndicator,
 } from './index.style'
 import { dayStr } from '../../utils'
@@ -26,7 +27,11 @@ const Calendar: React.FC<ICalendar> = (props) => {
 
   const drawCalendarBody = () => {
     return calendarDate.map((date, i) => {
-      return <DateCell key={i}>{date}</DateCell>
+      return (
+        <DateCell key={i}>
+          <DateIndicator>{date}</DateIndicator>
+        </DateCell>
+      )
     })
   }
 

@@ -47,3 +47,10 @@ export const DateCell = styled.div`
   font-size: 14px;
   line-height: 16px;
 `
+
+export const DateIndicator = styled.div`
+  color: #333333;
+  position: relative;
+  left: 10px;
+  top: 10px;
+`
