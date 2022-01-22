@@ -32,6 +32,7 @@ const Card = styled.div`
   width: 420px;
   border: 1px solid;
   margin: 10px;
+  padding: 20px;
 `
 
 const SpendTitle = styled.div`
