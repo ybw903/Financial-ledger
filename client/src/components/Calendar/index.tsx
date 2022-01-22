@@ -10,6 +10,7 @@ import { dayStr } from '../../utils'
 
 interface ICalendar {
   date: Date
+  isOpen: boolean
 }
 
 const Calendar: React.FC<ICalendar> = (props) => {
@@ -76,7 +77,7 @@ const Calendar: React.FC<ICalendar> = (props) => {
   }, [props.date, getNewCalendarDate])
 
   return (
-    <div>
+    <div style={props.isOpen ? {} : { display: 'none' }}>
       <CalendarHeader>{drawCalendarHeader()}</CalendarHeader>
       <CalendarBody>{drawCalendarBody()}</CalendarBody>
     </div>

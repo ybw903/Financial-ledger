@@ -84,6 +84,7 @@ const DailyExpenseElement = styled.div`
 
 function App() {
   const [date, setDate] = useState(new Date())
+  const [isOpen, setIsOpen] = useState(true)
   const totTalSpend = useMemo(
     () =>
       data.spends
@@ -109,6 +110,12 @@ function App() {
       }),
     []
   )
+
+  const onClickHandler = (
+    evt: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    setIsOpen((prev) => !prev)
+  }
   return (
     <Main>
       <Header>
@@ -122,9 +129,11 @@ function App() {
         <Card>
           <DailyExpenseHedaer>
             <DailyExpenseTitle>전체 내역</DailyExpenseTitle>
-            <DailyExpenseTextButton>달력 접기</DailyExpenseTextButton>
+            <DailyExpenseTextButton onClick={onClickHandler}>
+              달력 접기
+            </DailyExpenseTextButton>
           </DailyExpenseHedaer>
-          <Calendar date={date}></Calendar>
+          <Calendar date={date} isOpen={isOpen}></Calendar>
           <DailyExpenseList>
             <DailyExpenseDay>
               {date.getDate()}일 {dayStr[date.getDay()]}요일
