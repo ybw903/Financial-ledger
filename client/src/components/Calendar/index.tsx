@@ -2,6 +2,7 @@ import * as React from 'react'
 import {
   CalendarBody,
   CalendarHeader,
+  CalendarSection,
   DateCell,
   DateIndicator,
   DayIndicator,
@@ -77,10 +78,10 @@ const Calendar: React.FC<ICalendar> = (props) => {
   }, [props.date, getNewCalendarDate])
 
   return (
-    <div style={props.isOpen ? {} : { display: 'none' }}>
+    <CalendarSection isOpen={props.isOpen}>
       <CalendarHeader>{drawCalendarHeader()}</CalendarHeader>
       <CalendarBody>{drawCalendarBody()}</CalendarBody>
-    </div>
+    </CalendarSection>
   )
 }
 

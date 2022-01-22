@@ -4,6 +4,21 @@ interface IDayIndicator {
   isHoliday: boolean
 }
 
+interface ICalendar {
+  isOpen: boolean
+}
+
+export const CalendarSection = styled.div<ICalendar>`
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+  flex-direction: column;
+  padding: 34px 22px;
+  box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding: 34px 22px;
+  width: 372px;
+  height: calc(372px * 0.9);
+`
+
 export const CalendarHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -46,6 +61,7 @@ export const DateCell = styled.div`
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
+  box-sizing: border-box;
 `
 
 export const DateIndicator = styled.div`
