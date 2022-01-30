@@ -62,6 +62,9 @@ export const DateCell = styled.div`
   font-size: 14px;
   line-height: 16px;
   box-sizing: border-box;
+  &:hover {
+    background-color: lightgray;
+  }
 `
 
 export const DateIndicator = styled.div`
