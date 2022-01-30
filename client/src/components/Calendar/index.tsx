@@ -14,8 +14,13 @@ interface ICalendar {
   isOpen: boolean
 }
 
+interface ICalendarDate {
+  isInMonth: boolean
+  dateNumber: number
+}
+
 const Calendar: React.FC<ICalendar> = (props) => {
-  const [calendarDate, setCalendarDate] = React.useState<any[]>([])
+  const [calendarDate, setCalendarDate] = React.useState<ICalendarDate[]>([])
 
   const drawCalendarHeader = () => {
     return dayStr.map((day, i) => {
@@ -31,14 +36,16 @@ const Calendar: React.FC<ICalendar> = (props) => {
     return calendarDate.map((date, i) => {
       return (
         <DateCell key={i}>
-          <DateIndicator>{date}</DateIndicator>
+          <DateIndicator isInMonth={date.isInMonth}>
+            {date.dateNumber}
+          </DateIndicator>
         </DateCell>
       )
     })
   }
 
   const getNewCalendarDate = React.useCallback(() => {
-    const newCalendarDate: any[] = []
+    const newCalendarDate: ICalendarDate[] = []
     const thisMonthStartDay = new Date(
       props.date.getFullYear(),
       props.date.getMonth(),
@@ -58,17 +65,17 @@ const Calendar: React.FC<ICalendar> = (props) => {
 
     for (let i = 0; i < thisMonthStartDay; i++) {
       const date = i + lastMonthStartDate
-      newCalendarDate.push(date)
+      newCalendarDate.push({ dateNumber: date, isInMonth: false })
     }
     for (let i = 0; i < thisMonthEndDate; i++) {
       const date = i + 1
-      newCalendarDate.push(date)
+      newCalendarDate.push({ dateNumber: date, isInMonth: true })
     }
     const neededCellCnt = 42 - newCalendarDate.length
 
     for (let i = 0; i < neededCellCnt; i++) {
       const date = i + 1
-      newCalendarDate.push(date)
+      newCalendarDate.push({ dateNumber: date, isInMonth: false })
     }
     return newCalendarDate
   }, [props.date])

@@ -8,6 +8,10 @@ interface ICalendar {
   isOpen: boolean
 }
 
+interface IDateIndicator {
+  isInMonth: boolean
+}
+
 export const CalendarSection = styled.div<ICalendar>`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
@@ -67,9 +71,9 @@ export const DateCell = styled.div`
   }
 `
 
-export const DateIndicator = styled.div`
-  color: #333333;
+export const DateIndicator = styled.div<IDateIndicator>`
   position: relative;
+  color: ${(props) => (props.isInMonth ? '#333333' : '#bdbdbd')};
   left: 10px;
   top: 10px;
 `
