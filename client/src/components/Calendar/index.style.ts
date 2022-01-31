@@ -12,6 +12,10 @@ interface IDateIndicator {
   isInMonth: boolean
 }
 
+interface IDateCell {
+  isToday: boolean
+}
+
 export const CalendarSection = styled.div<ICalendar>`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
@@ -53,11 +57,11 @@ export const CalendarBody = styled.div`
   height: 85%;
 `
 
-export const DateCell = styled.div`
+export const DateCell = styled.div<IDateCell>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #f5f5f7;
+  background-color: ${(props) => (props.isToday ? 'lightgray' : '#f5f5f7')};
   border-radius: 10px;
   padding: 0px 9px 4px 0px;
   width: 100%;

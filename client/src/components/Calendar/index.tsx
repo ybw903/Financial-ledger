@@ -17,6 +17,7 @@ interface ICalendar {
 interface ICalendarDate {
   isInMonth: boolean
   dateNumber: number
+  isToday: boolean
 }
 
 const Calendar: React.FC<ICalendar> = (props) => {
@@ -35,7 +36,7 @@ const Calendar: React.FC<ICalendar> = (props) => {
   const drawCalendarBody = () => {
     return calendarDate.map((date, i) => {
       return (
-        <DateCell key={i}>
+        <DateCell key={i} isToday={date.isToday}>
           <DateIndicator isInMonth={date.isInMonth}>
             {date.dateNumber}
           </DateIndicator>
@@ -65,17 +66,29 @@ const Calendar: React.FC<ICalendar> = (props) => {
 
     for (let i = 0; i < thisMonthStartDay; i++) {
       const date = i + lastMonthStartDate
-      newCalendarDate.push({ dateNumber: date, isInMonth: false })
+      newCalendarDate.push({
+        dateNumber: date,
+        isInMonth: false,
+        isToday: false,
+      })
     }
     for (let i = 0; i < thisMonthEndDate; i++) {
       const date = i + 1
-      newCalendarDate.push({ dateNumber: date, isInMonth: true })
+      newCalendarDate.push({
+        dateNumber: date,
+        isInMonth: true,
+        isToday: date === props.date.getDate(),
+      })
     }
     const neededCellCnt = 42 - newCalendarDate.length
 
     for (let i = 0; i < neededCellCnt; i++) {
       const date = i + 1
-      newCalendarDate.push({ dateNumber: date, isInMonth: false })
+      newCalendarDate.push({
+        dateNumber: date,
+        isInMonth: false,
+        isToday: false,
+      })
     }
     return newCalendarDate
   }, [props.date])
