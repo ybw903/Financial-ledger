@@ -6,8 +6,10 @@ import {
   DateCell,
   DateIndicator,
   DayIndicator,
+  SumIndicator,
 } from './index.style'
 import { dayStr } from '../../utils'
+import data from '../../data/data.json'
 
 interface ICalendar {
   date: Date
@@ -18,6 +20,8 @@ interface ICalendarDate {
   isInMonth: boolean
   dateNumber: number
   isToday: boolean
+  expenditureSum: number
+  incomeSum: number
 }
 
 const Calendar: React.FC<ICalendar> = (props) => {
@@ -40,6 +44,13 @@ const Calendar: React.FC<ICalendar> = (props) => {
           <DateIndicator isInMonth={date.isInMonth}>
             {date.dateNumber}
           </DateIndicator>
+          {date.expenditureSum ? (
+            <SumIndicator isExpenditure={true}>
+              -{date.expenditureSum}
+            </SumIndicator>
+          ) : (
+            <></>
+          )}
         </DateCell>
       )
     })
@@ -70,14 +81,43 @@ const Calendar: React.FC<ICalendar> = (props) => {
         dateNumber: date,
         isInMonth: false,
         isToday: false,
+        incomeSum: 0,
+        expenditureSum: 0,
       })
     }
     for (let i = 0; i < thisMonthEndDate; i++) {
       const date = i + 1
+      const expenditureSum = data.spends
+        .filter((spend) => {
+          const spendDate = new Date(spend.date)
+          const todayDate = new Date()
+          return (
+            spendDate.getFullYear() === todayDate.getFullYear() &&
+            spendDate.getMonth() === todayDate.getMonth() &&
+            spendDate.getDate() === date &&
+            spend.type === 'EXPENDITURE'
+          )
+        })
+        .reduce((acc, cur, idx) => (acc += cur.money), 0)
+      const incomeSum = data.spends
+        .filter((spend) => {
+          const spendDate = new Date(spend.date)
+          const todayDate = new Date()
+          return (
+            spendDate.getFullYear() === todayDate.getFullYear() &&
+            spendDate.getMonth() === todayDate.getMonth() &&
+            spendDate.getDate() === date &&
+            spend.type === 'INCOME'
+          )
+        })
+        .reduce((acc, cur, idx) => (acc += cur.money), 0)
+
       newCalendarDate.push({
         dateNumber: date,
         isInMonth: true,
         isToday: date === props.date.getDate(),
+        incomeSum: incomeSum,
+        expenditureSum: expenditureSum,
       })
     }
     const neededCellCnt = 42 - newCalendarDate.length
@@ -88,8 +128,11 @@ const Calendar: React.FC<ICalendar> = (props) => {
         dateNumber: date,
         isInMonth: false,
         isToday: false,
+        incomeSum: 0,
+        expenditureSum: 0,
       })
     }
+
     return newCalendarDate
   }, [props.date])
 

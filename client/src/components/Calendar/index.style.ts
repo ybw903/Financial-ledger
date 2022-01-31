@@ -16,6 +16,10 @@ interface IDateCell {
   isToday: boolean
 }
 
+interface ISumIndicator {
+  isExpenditure: boolean
+}
+
 export const CalendarSection = styled.div<ICalendar>`
   display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
@@ -78,6 +82,13 @@ export const DateCell = styled.div<IDateCell>`
 export const DateIndicator = styled.div<IDateIndicator>`
   position: relative;
   color: ${(props) => (props.isInMonth ? '#333333' : '#bdbdbd')};
-  left: 10px;
-  top: 10px;
+  left: 5px;
+  top: 5px;
+`
+
+export const SumIndicator = styled.div<ISumIndicator>`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: ${(props) => (props.isExpenditure ? '#f8123b' : '#166ff3')};
 `
