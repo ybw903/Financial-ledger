@@ -129,7 +129,7 @@ function App() {
       <Section>
         <Card>
           <SpendTitle>이번 달 소비</SpendTitle>
-          <SpendTotal>{totTalSpend} 원</SpendTotal>
+          <SpendTotal>{totTalSpend.toLocaleString('ko-KR')} 원</SpendTotal>
         </Card>
         <Card>
           <DailyExpenseHedaer>
@@ -146,7 +146,7 @@ function App() {
             {todayAmounts.map((todayAmount, i) => (
               <DailyExpenseElement key={i}>
                 {todayAmount.type === 'EXPENDITURE' ? '-' : '+'}
-                {todayAmount.money}원
+                {todayAmount.money.toLocaleString('ko-KR')}원
               </DailyExpenseElement>
             ))}
           </DailyExpenseList>

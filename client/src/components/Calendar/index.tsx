@@ -64,7 +64,7 @@ const Calendar: React.FC<ICalendar> = (props) => {
           </DateIndicator>
           {date.expenditureSum ? (
             <SumIndicator isExpenditure={true}>
-              -{date.expenditureSum}
+              -{date.expenditureSum.toLocaleString('ko-KR')}
             </SumIndicator>
           ) : (
             <></>
