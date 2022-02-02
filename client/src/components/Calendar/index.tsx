@@ -14,6 +14,7 @@ import data from '../../data/data.json'
 interface ICalendar {
   date: Date
   isOpen: boolean
+  setDate: React.Dispatch<React.SetStateAction<Date>>
 }
 
 interface ICalendarDate {
@@ -37,10 +38,27 @@ const Calendar: React.FC<ICalendar> = (props) => {
     })
   }
 
+  const cellClickHandler = (
+    evt: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    dateNumber: number
+  ) => {
+    const nextDate = new Date(
+      props.date.getFullYear(),
+      props.date.getMonth(),
+      dateNumber
+    )
+    console.log(nextDate)
+    props.setDate((prev) => nextDate)
+  }
+
   const drawCalendarBody = () => {
     return calendarDate.map((date, i) => {
       return (
-        <DateCell key={i} isToday={date.isToday}>
+        <DateCell
+          key={i}
+          isToday={date.isToday}
+          onClick={(evt) => cellClickHandler(evt, date.dateNumber)}
+        >
           <DateIndicator isInMonth={date.isInMonth}>
             {date.dateNumber}
           </DateIndicator>

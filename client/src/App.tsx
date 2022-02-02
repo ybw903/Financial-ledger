@@ -135,7 +135,7 @@ function App() {
               달력 접기
             </DailyExpenseTextButton>
           </DailyExpenseHedaer>
-          <Calendar date={date} isOpen={isOpen}></Calendar>
+          <Calendar date={date} isOpen={isOpen} setDate={setDate}></Calendar>
           <DailyExpenseList>
             <DailyExpenseDay>
               {date.getDate()}일 {dayStr[date.getDay()]}요일
