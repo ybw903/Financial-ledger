@@ -30,8 +30,9 @@ const Section = styled.section`
 
 const Card = styled.div`
   width: 420px;
-  border: 1px solid;
+
   border-radius: 25px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   margin: 10px;
   padding: 20px;
 `
@@ -92,25 +93,24 @@ function App() {
       data.spends
         .filter(
           (spend) =>
-            new Date(spend.date).getMonth() === new Date().getMonth() &&
+            new Date(spend.date).getMonth() === date.getMonth() &&
             spend.type === 'EXPENDITURE'
         )
         .reduce((acc, cur, idx) => (acc += cur.money), 0),
 
-    [data]
+    [date]
   )
   const todayAmounts = useMemo(
     () =>
       data.spends.filter((spend) => {
         const spendDate = new Date(spend.date)
-        const todayDate = new Date()
         return (
-          spendDate.getFullYear() === todayDate.getFullYear() &&
-          spendDate.getMonth() === todayDate.getMonth() &&
-          spendDate.getDate() === todayDate.getDate()
+          spendDate.getFullYear() === date.getFullYear() &&
+          spendDate.getMonth() === date.getMonth() &&
+          spendDate.getDate() === date.getDate()
         )
       }),
-    []
+    [date]
   )
 
   const onClickHandler = (
