@@ -40,12 +40,13 @@ const Calendar: React.FC<ICalendar> = (props) => {
 
   const cellClickHandler = (
     evt: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    dateNumber: number
+    date: ICalendarDate
   ) => {
+    if (!date.isInMonth) return
     const nextDate = new Date(
       props.date.getFullYear(),
       props.date.getMonth(),
-      dateNumber
+      date.dateNumber
     )
     console.log(nextDate)
     props.setDate((prev) => nextDate)
@@ -57,7 +58,7 @@ const Calendar: React.FC<ICalendar> = (props) => {
         <DateCell
           key={i}
           isToday={date.isToday}
-          onClick={(evt) => cellClickHandler(evt, date.dateNumber)}
+          onClick={(evt) => cellClickHandler(evt, date)}
         >
           <DateIndicator isInMonth={date.isInMonth}>
             {date.dateNumber}
