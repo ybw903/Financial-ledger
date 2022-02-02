@@ -4,37 +4,65 @@
       "id": 0,
       "type": "EXPENDITURE",
       "money": 1000,
+      "content": "캔커피",
+      "payment": "현금",
       "date": "2021-11-01 23:12:18"
     },
     {
       "id": 1,
       "type": "INCOME",
-      "money": 1000,
+      "money": 10000,
+      "content": "용돈",
+      "payment": "현금",
       "date": "2021-11-02 23:12:18"
     },
     {
       "id": 2,
       "type": "EXPENDITURE",
       "money": 2000,
+      "content": "음료",
+      "payment": "현금",
       "date": "2021-11-04 23:12:18"
     },
     {
       "id": 3,
       "type": "EXPENDITURE",
       "money": 3000,
+      "content": "음료",
+      "payment": "현금",
       "date": "2021-11-03 23:12:18"
     },
     {
       "id": 4,
       "type": "EXPENDITURE",
       "money": 3000,
+      "content": "음료",
+      "payment": "현금",
       "date": "2022-01-18 23:12:18"
     },
     {
       "id": 5,
       "type": "EXPENDITURE",
       "money": 12000,
+      "content": "식비",
+      "payment": "카드",
       "date": "2022-01-14 23:12:18"
+    },
+    {
+      "id": 6,
+      "type": "EXPENDITURE",
+      "money": 12000,
+      "content": "식비",
+      "payment": "카드",
+      "date": "2022-01-31 23:12:18"
+    },
+    {
+      "id": 7,
+      "type": "EXPENDITURE",
+      "money": 18000,
+      "content": "식비",
+      "payment": "카드",
+      "date": "2022-01-31 23:12:31"
     }
   ]
 }

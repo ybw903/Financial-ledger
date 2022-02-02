@@ -31,6 +31,7 @@ const Section = styled.section`
 const Card = styled.div`
   width: 420px;
   border: 1px solid;
+  border-radius: 25px;
   margin: 10px;
   padding: 20px;
 `
@@ -142,7 +143,7 @@ function App() {
             {todayAmounts.map((todayAmount, i) => (
               <DailyExpenseElement key={i}>
                 {todayAmount.type === 'EXPENDITURE' ? '-' : '+'}
-                {todayAmount.money} 원
+                {todayAmount.money}원
               </DailyExpenseElement>
             ))}
           </DailyExpenseList>
