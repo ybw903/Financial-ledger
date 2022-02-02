@@ -48,7 +48,6 @@ const Calendar: React.FC<ICalendar> = (props) => {
       props.date.getMonth(),
       date.dateNumber
     )
-    console.log(nextDate)
     props.setDate((prev) => nextDate)
   }
 

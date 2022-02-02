@@ -29,12 +29,14 @@ const Section = styled.section`
 `
 
 const Card = styled.div`
-  width: 420px;
-
+  width: 840px;
   border-radius: 25px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   margin: 10px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const SpendTitle = styled.div`
@@ -54,6 +56,7 @@ const DailyExpenseHedaer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 14px;
+  width: 100%;
 `
 
 const DailyExpenseTitle = styled.div`

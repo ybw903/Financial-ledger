@@ -27,8 +27,8 @@ export const CalendarSection = styled.div<ICalendar>`
   box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 34px 22px;
-  width: 372px;
-  height: calc(372px * 0.9);
+  width: 472px;
+  height: calc(472px * 0.8);
 `
 
 export const CalendarHeader = styled.div`
