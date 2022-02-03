@@ -1,4 +1,4 @@
-import { DropDownList } from './index.style'
+import { DropDownElemnt, DropDownList } from './index.style'
 
 interface IDropDown {
   isShow: boolean
@@ -7,9 +7,9 @@ interface IDropDown {
 const DropDown = ({ isShow }: IDropDown) => {
   return (
     <DropDownList isShow={isShow}>
-      <li>test1</li>
-      <li>test2</li>
-      <li>test3</li>
+      <DropDownElemnt>test1</DropDownElemnt>
+      <DropDownElemnt>test2</DropDownElemnt>
+      <DropDownElemnt>test3</DropDownElemnt>
     </DropDownList>
   )
 }
