@@ -125,7 +125,7 @@ function App() {
   return (
     <Main>
       <Header>
-        <HeaderBar date={date} />
+        <HeaderBar date={date} setDate={setDate} />
       </Header>
       <Section>
         <Card>
