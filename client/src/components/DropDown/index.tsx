@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { DropDownElemnt, DropDownList } from './index.style'
 
 interface IDropDown {
@@ -5,11 +6,18 @@ interface IDropDown {
 }
 
 const DropDown = ({ isShow }: IDropDown) => {
+  const date = new Date()
+  const beforeDate = Array.from(
+    { length: 42 },
+    (v, i) => new Date(date.getFullYear(), date.getMonth() - i)
+  )
   return (
     <DropDownList isShow={isShow}>
-      <DropDownElemnt>test1</DropDownElemnt>
-      <DropDownElemnt>test2</DropDownElemnt>
-      <DropDownElemnt>test3</DropDownElemnt>
+      {beforeDate.map((v, i) => (
+        <DropDownElemnt key={i}>
+          {v.getFullYear()}년 {v.getMonth() + 1}월
+        </DropDownElemnt>
+      ))}
     </DropDownList>
   )
 }
